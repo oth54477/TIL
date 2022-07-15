@@ -1,4 +1,4 @@
-![waving](<![waving](https://capsule-render.vercel.app/api?type=waving&height=200&text=Tech-Interview&fontAlign=70&fontAlignY=35&color=gradient)>)
+![waving](<![waving](https://images.velog.io/images/richard/post/201e8ec8-605b-4695-9a3b-7280d2e8e4aa/TIL1.png)>)
 
 # Today I Learned
 
