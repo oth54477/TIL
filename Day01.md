@@ -68,7 +68,7 @@
   git remote remove origin
   ```
 
-- 로컬 저장소의 commits을 원격 저장소에 반영
+- 로컬 저장소의 commits을 원격 저장소에 반영 
 
   ```bash
   git push origin master
