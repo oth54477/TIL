@@ -6,6 +6,7 @@
 
 - 프로젝트를 설명하는 문서
 - 프로젝트를 시작할때 꼭 생성해준다.
+- 마크다운 형식으로 작성
 - README는 대문자로
 - [https://github.com/woowacourse-teams](https://github.com/woowacourse-teams)
 
@@ -25,7 +26,9 @@
 ### 1. Clone
 
 - git clone = 다운로드
-  `git clone [Github repository URL]`
+  ```bash
+  git clone [Github repository URL]
+  ```
 - 작동 순서
   1. 폴더 생성
   2. git init
@@ -39,7 +42,9 @@
 ### 2. Pull
 
 - git pull = 업데이트
-  `git pull origin master`
+  ```bash
+  git pull origin master
+  ```
 
 ## Github profiles
 
