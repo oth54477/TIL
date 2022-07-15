@@ -25,6 +25,7 @@
 ### 1. Clone
 
 - git clone = 다운로드
+  `git clone [Github repository URL]`
 - 작동 순서
   1. 폴더 생성
   2. git init
@@ -38,6 +39,7 @@
 ### 2. Pull
 
 - git pull = 업데이트
+  `git pull origin master`
 
 ## Github profiles
 
@@ -47,3 +49,10 @@
 
 - 커밋 메세지는 규칙을 따라서 하기 (중요)
 - 전 세계적으로 정해진 규칙 x
+- feat : 새로운 기능 추가
+- fix : 버그 수정
+- docs : 문서 수정
+- style : 포맷팅, 세미클론 빠졌을 때, 코드 변경이 없는 수정
+- refactor : 리팩토링
+- test : 테스트 코드 추가, 테스트 코드 리팩토링
+- chore : 빌드관련 수정, 패키지 매니저 수정
