@@ -1,8 +1,3 @@
-# 1928. Base64 Decoder
-
-import string
-
-
 T = int(input())
 
 for test_case in range(1, T + 1):
