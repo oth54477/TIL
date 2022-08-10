@@ -1,3 +1,21 @@
+def find(i, j):
+    global row, col, cnt, number, snail, end_condition, N
+    while cnt < N - 1:
+        if snail[row + i][col + j] != 0:
+            break
+        else:
+            number += 1
+            if i != 0:
+                row += i
+            else:
+                col += j
+            snail[row][col] = number
+            end_condition = 0
+            cnt += 1
+    cnt = 0
+
+
+# s3.py
 T = int(input())
 for t in range(1, T + 1):
 
@@ -9,47 +27,15 @@ for t in range(1, T + 1):
     row = 0
     col = 0
     cnt = 0
+    end_condition = 0
     while number != N**2:  # number가 N의 제곱이 될 때까지 반복
-        while True and cnt < N - 1:  # 오른쪽으로 이동
-            if snail[row][col + 1] != 0:  # 다음칸(오른쪽)의 값이 0이 아니면  정지
-                break
-            else:
-                number += 1
-                col += 1
-                snail[row][col] = number
-                end_condition = 0
-                cnt += 1
-        cnt = 0
-        while True and cnt < N - 1:  # 아래쪽으로 이동
-            if snail[row + 1][col] != 0:  # 다음칸(아래쪽)의 값이 0이 아니면  정지
-                break
-            else:
-                number += 1
-                row += 1
-                snail[row][col] = number
-                end_condition = 0
-                cnt += 1
-        cnt = 0
-        while True and cnt <= N - 1:  # 왼쪽
-            if snail[row][col - 1] != 0:  # 다음칸(왼쪽)의 값이 0이 아니면  정지
-                break
-            else:
-                number += 1
-                col -= 1
-                snail[row][col] = number
-                end_condition = 0
-                cnt += 1
-        cnt = 0
-        while True and cnt <= N - 1:  # 위쪽
-            if snail[row - 1][col] != 0:  # 다음칸(위쪽)의 값이 0이 아니면  정지
-                break
-            else:
-                number += 1
-                row -= 1
-                snail[row][col] = number
-                end_condition = 0
-                cnt += 1
+        find(0, 1)  # 오
 
+        find(1, 0)  # 아래
+
+        find(0, -1)  # 왼
+
+        find(-1, 0)  # 위
     print(f'#{t}')
     for rows in snail:
         for cols in rows:
