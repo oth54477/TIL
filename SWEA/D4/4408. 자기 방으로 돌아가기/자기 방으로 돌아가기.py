@@ -1,6 +1,5 @@
 for t in range(1, int(input()) + 1):
     n = int(input())
-    cnt = 1
     paths = [0] * 201
     for _ in range(n):
         start, end = map(int, input().split())
