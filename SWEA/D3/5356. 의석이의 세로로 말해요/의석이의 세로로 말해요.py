@@ -1,7 +1,5 @@
 for t in range(1, int(input()) + 1):
-    n = 5
-    breaker = False
-    arr = [input() for _ in range(n)]
+    arr = [input() for _ in range(5)]
     arr_col = [''] * 15
     for row in range(15):
         for col in range(5):
