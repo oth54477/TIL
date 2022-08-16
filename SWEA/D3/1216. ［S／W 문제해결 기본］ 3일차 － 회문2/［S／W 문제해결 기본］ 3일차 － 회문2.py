@@ -23,10 +23,6 @@ for _ in range(10):
                 check_row = arr[row][idx : idx + m]
                 # 세로열 검사
                 check_col = arr_col[row][idx : idx + m]
-                # if check_row == check_row[::-1]:
-                #     print(f'#{t} {check_row}')
-                # elif check_col == check_col[::-1]:
-                #     print(f'#{t} {check_col}')
                 if (check_row == check_row[::-1]) or (check_col == check_col[::-1]):
                     print(f'#{t} {m}')
                     breaker = True
