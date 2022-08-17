@@ -1,4 +1,5 @@
 for t in range(1, int(input()) + 1):
+    print(f'#{t}')
     n = int(input())
     cnt = 0
     arr = [[] for _ in range(n)]
@@ -9,8 +10,6 @@ for t in range(1, int(input()) + 1):
                 arr[cnt].append(1)
             else:
                 arr[cnt].append(arr[cnt - 1][i] + arr[cnt - 1][i - 1])
+        print(*arr[cnt])
         cnt += 1
 
-    print(f'#{t}')
-    for idx in range(n):
-        print(*arr[idx])
