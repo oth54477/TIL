@@ -1,15 +1,28 @@
+def pascal(stack):
+    global n
+    new_stack = []
+    old_num = 0
+    if not stack:
+        new_stack = [1]
+    else:
+        for _ in range(len(stack) + 1):
+            if not stack:
+                now_num = 0
+            else:
+                now_num = stack.pop()
+            new_stack.append(old_num + now_num)
+            old_num = now_num
+
+    print(*new_stack)
+    if len(new_stack) >= n:
+        return
+    else:
+        pascal(new_stack)
+
+
 for t in range(1, int(input()) + 1):
     print(f'#{t}')
     n = int(input())
-    cnt = 0
-    arr = [[] for _ in range(n)]
 
-    while cnt < n:
-        for i in range(cnt + 1):
-            if i - 1 < 0 or i + 1 > cnt:
-                arr[cnt].append(1)
-            else:
-                arr[cnt].append(arr[cnt - 1][i] + arr[cnt - 1][i - 1])
-        print(*arr[cnt])
-        cnt += 1
-
+    stack = []
+    pascal(stack)
