@@ -1,0 +1,2 @@
+def solution(n, m):
+    return [max(list(set([(i if n % i == 0 else 0) for i in range(1, n + 1)]) & set([(i if m % i == 0 else 0) for i in range(1, m + 1)]))),  min(list(set(i for i in range(n, n * m + 1, n)) & set(i for i in range(m, n * m + 1, m)))),]
