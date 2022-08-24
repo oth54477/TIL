@@ -12,8 +12,7 @@ for _ in range(10):
             break
         queue.append(num)
 
+        n %= 5
         n += 1
-        if n == 6:
-            n = 1
 
     print(f'#{t}', *queue)
