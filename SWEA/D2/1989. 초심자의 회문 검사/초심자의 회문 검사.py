@@ -1,7 +1,6 @@
-n=input()
-for i in range(0,int(n)):
+for t in range(1,int(input())+1):
     text = input()
     if text == text[::-1]:
-        print('#'+str(i+1), '1')
+        print(f'#{t} 1')
     else:
-        print('#'+str(i+1), '0')
+        print(f'#{t} 0')
