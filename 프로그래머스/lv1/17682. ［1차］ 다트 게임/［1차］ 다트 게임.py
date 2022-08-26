@@ -1,17 +1,6 @@
 def solution(dartResult):
-    queue_dart = list(map(str, dartResult))
-    queue = []
-    while queue_dart:
-        v = queue_dart.pop(0)
-        if v.isdigit() and queue_dart:
-            v2 = queue_dart.pop(0)
-            if v2.isdigit():
-                queue.append(v + v2)
-            else:
-                queue.append(v)
-                queue.append(v2)
-        else:
-            queue.append(v)
+    queue = list(map(str, dartResult))
+    
     result_stack = []
     while queue:
         value = queue.pop(0)
@@ -19,6 +8,9 @@ def solution(dartResult):
         if value.isdigit():
             value = int(value)
             squared = queue.pop(0)
+            if squared.isdigit():
+                value = 10
+                squared = queue.pop(0)
             if squared == 'D':
                 value = value**2
             elif squared == 'T':
