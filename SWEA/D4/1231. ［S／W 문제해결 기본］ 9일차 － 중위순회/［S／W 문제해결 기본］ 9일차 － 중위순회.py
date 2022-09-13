@@ -1,10 +1,13 @@
 def inorder(n):
     global result
-    if n:
-        inorder(ch1[n])
+    g = graphs[n]
+    if not g:
         result += nodes[n]
-        inorder(ch2[n])
-
+    else:
+        inorder(g[0])
+        result += nodes[n]
+        if len(g) == 2:
+            inorder(g[1])
 
 for t in range(1, 11):
     E = int(input())
@@ -21,11 +24,6 @@ for t in range(1, 11):
     ch1 = [0] * (V + 1)
     ch2 = [0] * (V + 1)
     result = ''
-    for idx, value in enumerate(graphs):
-        if value:
-            ch1[idx] = value.pop(0)
-            if value:
-                ch2[idx] = value.pop(0)
 
     inorder(root)
     print(f'#{t} {result}')
