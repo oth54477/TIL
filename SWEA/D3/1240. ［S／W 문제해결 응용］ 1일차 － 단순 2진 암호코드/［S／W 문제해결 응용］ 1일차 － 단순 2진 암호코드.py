@@ -2,10 +2,10 @@ table = {'0001101': 0, '0011001': 1, '0010011': 2, '0111101': 3, '0100011': 4, '
 for t in range(1, int(input()) + 1):
     n, m = map(int, input().split())
     for _ in range(n):
-        line = int(input())
-        if line != 0:
+        line = input()
+        if int(line) != 0:
             real_line = line
-    line = str(int(str(real_line)[::-1]))[::-1]
+    line = real_line.strip('0')
     line = ('0' * (7 - (len(line) % 7))) + line
     cnt, chk, result = 0, 0, 0
     for i in range(0, len(line), 7):
