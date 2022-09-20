@@ -1,7 +1,8 @@
 for t in range(1, int(input()) + 1):
     n, m = map(int, input().split())
 
-    m = format(m, 'b')
+    # m = format(m, 'b')
+    m = bin(m)[2:]
     result = 'ON'
     chk = m[-n:]
     if n > len(chk):
