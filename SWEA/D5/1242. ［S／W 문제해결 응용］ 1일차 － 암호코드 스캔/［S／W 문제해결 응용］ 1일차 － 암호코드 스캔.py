@@ -26,7 +26,7 @@ def find_ratio():
     binary = binary[i_00:]
     return ratio
 
-
+answer = []
 for t in range(1, int(input()) + 1):
     n, m = map(int, input().split())
     lines = set()
@@ -62,4 +62,6 @@ for t in range(1, int(input()) + 1):
             sum_num += num
         if chk_num % 10 == 0:
             result += sum_num
-    print(f'#{t} {result}')
+    answer.append(f'#{t} {result}')
+    # print(f'#{t} {result}')
+print(*answer,sep='\n')
