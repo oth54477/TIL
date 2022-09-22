@@ -7,8 +7,9 @@ def change(arr, m):
     for case in permutations(list(range(len(arr))), 2):
         a = list(arr)
         a[case[0]], a[case[1]] = a[case[1]], a[case[0]] 
-        if a not in tmp[m]:
-            tmp[m].append(a)
+        b = int(''.join(list(map(str,a))))
+        if b not in tmp[m]:
+            tmp[m].append(b)
             change(a, m+1)
         
 for t in range(1, int(input()) + 1):
