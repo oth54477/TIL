@@ -3,16 +3,14 @@ def find_set(node):
         parent[node] = find_set(parent[node])
     return parent[node]
 
-
 n = int(input())
 m = int(input())
 parent = list(range(n))
 for i in range(n):
     line = list(map(int, input().split()))
     for j in range(n):
-        x, y = i, j
         if line[j]:
-            x_root, y_root = find_set(x), find_set(y)  # Find
+            x_root, y_root = find_set(i), find_set(j)  # Find
             # Union
             if x_root != y_root:  # 서로소 집합인 경우만 합집합 연산
                 if x_root < y_root:
