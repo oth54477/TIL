@@ -1,3 +1,7 @@
+import sys
+
+input = sys.stdin.readline
+
 def find_set(node):
     if node != parent[node]:
         parent[node] = find_set(parent[node])
@@ -10,9 +14,8 @@ for i in range(n):
     line = list(map(int, input().split()))
     for j in range(n):
         if line[j]:
-            x_root, y_root = find_set(i), find_set(j)  # Find
-            # Union
-            if x_root != y_root:  # 서로소 집합인 경우만 합집합 연산
+            x_root, y_root = find_set(i), find_set(j)
+            if x_root != y_root:
                 if x_root < y_root:
                     parent[y_root] = x_root
                 else:
