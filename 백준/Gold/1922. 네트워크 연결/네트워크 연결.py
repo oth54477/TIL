@@ -1,3 +1,7 @@
+import sys
+
+input = sys.stdin.readline
+
 # 특정 원소가 속한 집합 찾기 (루트 노드 찾기)
 def find_set(node):
     if node != parent[node]:
