@@ -1,12 +1,12 @@
-
 def chk(arr):
     for i in range(w):
         cnt, now = 0, 1
         for j in range(d):
-            if arr[j][i] == now:
+            v = arr[j][i]
+            if v == now:
                 cnt += 1
             else:
-                now = arr[j][i]
+                now = v
                 cnt = 1
             if cnt == k:
                 break
@@ -49,6 +49,6 @@ def dfs(f_arr, chg_idx, cnt):
 for tc in range(1, int(input()) + 1):
     d, w, k = map(int, input().split())
     film = [list(map(int, input().split())) for _ in range(d)]
-    result, min_cnt = 0, 13
+    min_cnt = 13
     dfs(film, -1, 0)
     print(f'#{tc} {min_cnt}')
