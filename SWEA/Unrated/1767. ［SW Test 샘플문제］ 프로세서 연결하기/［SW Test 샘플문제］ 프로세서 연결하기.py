@@ -1,5 +1,3 @@
-from copy import deepcopy
-
 def dfs(arr, cnt, line_cnt, now):
     global max_chip, min_line, not_connect
     # 종료조건 -> 모든 칩을 검사했을 때
@@ -11,22 +9,22 @@ def dfs(arr, cnt, line_cnt, now):
         elif max_chip == cnt:
             min_line = min(min_line, line_cnt)
         return
-    
-    # 백트래킹 -> 최소 이상의 전선을 사용했을 때 -> 코어수로
+
+    # 백트래킹 -> 연결에 실패환 코어 수 
     if not_connect < now - cnt:
         return
-    
+
     # 현재 칩 위치 
     row, col = chips[now]
-    
+
     # 상 하 좌 우 4방향 검사
     for dr, dc in dxy:
         # cell 복사
-        copy_cell = deepcopy(arr)
+        copy_cell = [a[:] for a in arr]
         new_cnt, new_line_cnt = cnt, line_cnt
         line = []
         nr, nc = row + dr, col + dc
-        
+
         # 가장자리에 도착할 때 까지 반복
         while 0 <= nr < n and 0 <= nc < n:
             # 해당 위치가 0이면
@@ -49,8 +47,6 @@ def dfs(arr, cnt, line_cnt, now):
 
         # 다음 위치의 칩으로 재귀
         dfs(copy_cell, new_cnt, new_line_cnt, now + 1)
-        
-
 
 
 dxy = [(-1, 0), (1, 0), (0, -1), (0, 1)]
@@ -61,10 +57,10 @@ for tc in range(1, int(input()) + 1):
     chips = []
     max_chip, min_line = 0, n * n
     for k in range(1, n - 1):
-        connected_core += cells[k][0] + cells[k][-1] 
-    
-    for i in range(1, n-1):
-        for j in range(1, n-1):
+        connected_core += cells[k][0] + cells[k][-1]
+
+    for i in range(1, n - 1):
+        for j in range(1, n - 1):
             if cells[i][j] == 1:
                 chips.append((i, j))
     len_chip = len(chips)
