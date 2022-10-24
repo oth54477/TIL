@@ -1,6 +1,3 @@
-from itertools import permutations
+from itertools import combinations
 def solution(numbers):
-    result = set()
-    for x, y in permutations(numbers, 2):
-        result.add(x + y)
-    return sorted(result)
+    return sorted({(x + y) for x, y in combinations(numbers, 2)})
