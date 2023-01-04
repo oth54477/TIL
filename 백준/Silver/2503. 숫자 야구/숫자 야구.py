@@ -1,13 +1,8 @@
 import sys
 from itertools import permutations
-
 input = sys.stdin.readline
-
-n = int(input())
-arr = [list(map(lambda x: tuple(map(int, x)) if len(x) == 3 else int(x), input().split())) for _ in range(n)]
-
+arr = [list(map(lambda x: tuple(map(int, x)) if len(x) == 3 else int(x), input().split())) for _ in range(int(input()))]
 result = set()
-
 for case in permutations(range(1, 10), 3):
     for i in arr:
         number, strike, ball = i
@@ -21,6 +16,4 @@ for case in permutations(range(1, 10), 3):
             break
     else:
         result.add(case)
-        continue
-
 print(len(result))
