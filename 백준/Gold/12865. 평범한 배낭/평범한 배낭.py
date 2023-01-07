@@ -1,17 +1,26 @@
-n, k = map(int, input().split())
-knapsack = [[0] * (k + 1) for _ in range(n + 1)]
-stuff = [[0, 0]] + [list(map(int, input().split())) for _ in range(n)]
-for i in range(1, n + 1):
-    for j in range(1, k + 1):
-        weight = stuff[i][0]
-        value = stuff[i][1]
+import sys
 
-        if j < weight:
-            # weight보다 작으면 위의 값을 그대로 가져온다
-            knapsack[i][j] = knapsack[i - 1][j]
-        else:
-            knapsack[i][j] = max(
-                value + knapsack[i - 1][j - weight], knapsack[i - 1][j]
-            )
+input = sys.stdin.readline
 
-print(knapsack[n][k])
+def knapsack(W,wt,val,n):
+    k = [[0 for _ in range(W+1)] for _ in range(n + 1) ]
+    for i in range(n+1):
+        for w in range(W+1):
+            if i == 0 or w == 0:
+                k[i][w] = 0
+            elif wt[i-1] <= w:
+                k[i][w] = max(val[i-1]+ k[i-1][w-wt[i-1]], k[i-1][w])
+            else:
+                k[i][w] = k[i-1][w]
+    return k[n][W]
+
+n, k = map(int, input().strip().split())
+
+wt, val = [], []
+
+for _ in range(n):
+    w, v = map(int, input().strip().split())
+    wt.append(w)
+    val.append(v)
+
+print(knapsack(k,wt,val,n))
