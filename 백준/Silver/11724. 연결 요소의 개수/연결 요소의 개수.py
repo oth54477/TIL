@@ -1,13 +1,17 @@
 import sys
-sys.setrecursionlimit(5000)
+from collections import deque
+
 input = sys.stdin.readline
 
-def dfs(start, depth):
+def bfs(start):
+    dq = deque([start])
     visited[start] = True
-
-    for i in graph[start]:
-        if not visited[i]:
-            dfs(i, depth + 1)
+    while dq:
+        node = dq.popleft()
+        for i in graph[node]:
+            if not visited[i]:
+                visited[i] = True
+                dq.append(i)
 
 
 n, m = map(int, input().strip().split())
@@ -28,7 +32,7 @@ for i in range(1, n+1):
             count += 1
             visited[i] = True
         else:
-            dfs(i, 0)
+            bfs(i)
             count += 1
 
 print(count)
