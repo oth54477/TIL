@@ -1,19 +1,13 @@
 def solution(triangle):
-    L = len(triangle)
-    for row, arr in enumerate(triangle):
-        if row < L-1:
-            for idx, value in enumerate(triangle[row + 1]):
-                prev_idx1, prev_idx2 = idx - 1, idx
-                # 범위를 벗어나는 경우
-                if prev_idx1 < 0:
-                    prev_v1 = 0
-                else:
-                    prev_v1 = arr[prev_idx1]
-                if row < prev_idx2:
-                    prev_v2 = 0
-                else:
-                    prev_v2 = arr[prev_idx2]
-
-                # 더 큰값 선택
-                triangle[row+1][idx] = max(value + prev_v1, value + prev_v2)
-    return max(triangle[-1])
+    prev_row = triangle[0]
+    for row in triangle[1:]:
+        curr_row = []
+        for i, v in enumerate(row):
+            if i == 0:
+                curr_row.append(v + prev_row[0])
+            elif i == len(row)-1:
+                curr_row.append(v + prev_row[-1])
+            else:
+                curr_row.append(v + max(prev_row[i-1:i+1]))
+        prev_row = curr_row
+    return max(prev_row)
