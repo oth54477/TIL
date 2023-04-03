@@ -1,18 +1,24 @@
-def solution(board):
-    global win_o, win_x
-    temp = 1
-    win_x = False
-    win_o = False
+def count_pieces(board):
     cnt_o, cnt_x = 0, 0
     for line in board:
         for value in line:
-            globals()['value{}'.format(temp)] = value
-            temp += 1
             if value == "O":
                 cnt_o += 1
             elif value == "X":
                 cnt_x += 1
-    
+    return cnt_o, cnt_x
+
+def check_bingo(board, value1, value2, value3):
+    if value1 == value2 == value3 != ".":
+        if value1 == "O":
+            return True, False
+        elif value1 == "X":
+            return False, True
+    return False, False
+
+def solution(board):
+    cnt_o, cnt_x = count_pieces(board)
+
     # 개수 확인
     if cnt_x > cnt_o:
         return 0
@@ -20,22 +26,18 @@ def solution(board):
         return 0
 
     # 빙고 확인
-    if value1 == value2 == value3 != ".":
-        check(value1)
-    if value4 == value5 == value6 != ".":
-        check(value4)
-    if value7 == value8 == value9 != ".":
-        check(value7)
-    if value1 == value4 == value7 != ".":
-        check(value1)
-    if value2 == value5 == value8 != ".":
-        check(value2)
-    if value3 == value6 == value9 != ".":
-        check(value3)
-    if value1 == value5 == value9 != ".":
-        check(value1)
-    if value3 == value5 == value7 != ".":
-        check(value3)
+    win_o, win_x = False, False
+    for i in range(3):
+        row_o, row_x = check_bingo(board, board[i][0], board[i][1], board[i][2])
+        col_o, col_x = check_bingo(board, board[0][i], board[1][i], board[2][i])
+        win_o |= row_o or col_o
+        win_x |= row_x or col_x
+    diag_o1, diag_x1 = check_bingo(board, board[0][0], board[1][1], board[2][2])
+    diag_o2, diag_x2 = check_bingo(board, board[0][2], board[1][1], board[2][0])
+    win_o |= diag_o1 or diag_o2
+    win_x |= diag_x1 or diag_x2
+
+    # 결과 반환
     if win_o and win_x:
         return 0
     if win_o:
@@ -45,10 +47,3 @@ def solution(board):
         if cnt_o != cnt_x:
             return 0
     return 1
-
-def check(value):
-    global win_o, win_x
-    if value == "O":
-        win_o = True
-    elif value == "X":
-        win_x = True
