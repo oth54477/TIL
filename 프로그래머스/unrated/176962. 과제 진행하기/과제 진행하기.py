@@ -19,10 +19,10 @@ def solution(plans):
         # 진행중이던 과제를 끝냈을 때, 잠시 멈춘 과제가 있다면, 멈춰둔 과제를 이어서 진행합니다.
         elif temp < 0:
             result.append(old[0])
-            while waiting and temp < 0:
+            while waiting and temp <= 0:
                 temp += waiting[-1][1]
                 if temp <= 0:
-                    result.append(waiting.pop()[0])
+                    waiting.pop()
                 else:
                     waiting[-1][1] = temp
         # 만약, 과제를 끝낸 시각에 새로 시작해야 되는 과제와 잠시 멈춰둔 과제가 모두 있다면, 새로 시작해야 하는 과제부터 진행합니다.
