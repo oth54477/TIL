@@ -17,7 +17,7 @@ s = S[:point]
 if s == p:
     count += 1
 for i in range(point, M):
-    s = s[1:] + S[i]
+    s = "".join([s[1:], S[i]])
     if s == p:
         count += 1
 print(count)
