@@ -28,27 +28,20 @@ while left <= right:
     result = max(result, (now_r + 2*min(r, l)))
     if left == right:
         break
-    if r > l:
-        if i < r_count-1:
-            i += 1
-            now_r -= 1
-            left = r_arr[i]
-        else:
-            break
-    elif r < l:
-        if j > 0:
-            j -= 1
-            now_r -= 1
-            right = r_arr[j]
-        else:
-            break
+    if r > l and i < r_count-1:
+        i += 1
+        now_r -= 1
+        left = r_arr[i]
+    elif r < l and j > 0:
+        j -= 1
+        now_r -= 1
+        right = r_arr[j]
+    elif j > 0 and i < r_count-1:
+        i += 1
+        j -= 1
+        now_r -= 2
+        left, right = r_arr[i], r_arr[j]
     else:
-        if j > 0 and i < r_count-1:
-            i += 1
-            j -= 1
-            now_r -= 2
-            left, right = r_arr[i], r_arr[j]
-        else:
-            break
+        break
 
 print(result)
