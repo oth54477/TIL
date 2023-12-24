@@ -1,28 +1,34 @@
 def solution(n, m, x, y, r, c, k):
-    import sys
-    sys.setrecursionlimit(10000000)
-    D = [(1, 0), (0, -1), (0, 1), (-1, 0)]
-    table = {0: "d", 1: "l", 2:"r" , 3:"u"}
-    result = []
-    def dfs(row, col, cnt, s):
-        if result:
-            return
-        if cnt == k:
-            if row == r and col == c:
-                result.append(s)
-            return
-        for idx, d in enumerate(D):
-            dr, dc = d
-            nr, nc = row + dr, col + dc
-            if 0 <= nr < n and 0 <= nc < m:
-                l = abs(nr - r) + abs(nc - c)
-                limit = k - (cnt-1)
-                if limit >= l:
-                    dfs(nr, nc, cnt+1, s + table[idx])
-    x, y, r, c = x-1, y-1, r-1, c-1
-    dfs(x, y, 0, "")
-
-    if result:
-        return result[0]
-    else:
+    dist = abs(x - r) + abs(y - c)
+    margin = k - dist
+    if margin < 0 or margin%2 != 0:
         return "impossible"
+
+    result = ''
+    direction = {"d": 0, "l": 0, "r": 0, "u": 0}
+    if x > r:
+        direction["u"] += x-r
+    else:
+        direction["d"] += r-x
+    if y > c:
+        direction["l"] += y-c
+    else:
+        direction["r"] += c-y
+
+    result += "d"*direction["d"]
+    d = min(int(margin/2), n-(x+direction["d"]))
+    result += "d"*d
+    direction["u"] += d
+    margin -= 2*d
+
+    result += "l"*direction["l"]
+    l = min(int(margin/2), y-direction["l"]-1)
+    result += "l"*l
+    direction["r"] += l
+    margin -= 2*l
+
+    result += "rl"*int(margin/2)
+    result += "r"*direction["r"]
+    result += "u"*direction["u"]
+
+    return result
