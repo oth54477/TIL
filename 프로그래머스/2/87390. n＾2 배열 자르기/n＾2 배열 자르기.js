@@ -6,11 +6,7 @@ function solution(n, left, right) {
     const getValue = (x) => {
         const q = getQuotient(x)
         const r = getRemain(x)
-        if (r <= q) {
-            return q + 1
-        } else {
-            return r + 1
-        }
+        return Math.max(q + 1, r + 1)
     }
     
     return arr.reduce((acc, cur) => {
