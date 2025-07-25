@@ -1,24 +1,27 @@
 function solution(land) {
-    while (land.length > 1) {
-        const r = land.pop()
-        
-        const row = r.reduce((acc, cur, index) => {
-            acc.push([cur, index])
-            return acc
-        }, [])
-        
-        row.sort((a,b) => b[0] - a[0])
-        
-        for (let i=0; i<4; i++) {
-            if (row[0][1] === i) {
-                land[land.length-1][i] += row[1][0]    
-            } else {
-                land[land.length-1][i] += row[0][0]    
+    let prev = [...land[land.length - 1]];
+
+    for (let i = land.length - 2; i >= 0; i--) {
+        // 최대값과 두 번째 최대값 찾기
+        let max1 = -1, max2 = -1, maxIdx = -1;
+
+        for (let j = 0; j < 4; j++) {
+            if (prev[j] > max1) {
+                max2 = max1;
+                max1 = prev[j];
+                maxIdx = j;
+            } else if (prev[j] > max2) {
+                max2 = prev[j];
             }
         }
+
+        // 새로운 행 계산
+        const curr = land[i].map((val, idx) =>
+            val + (idx === maxIdx ? max2 : max1)
+        );
+
+        prev = curr;
     }
-    
-    land[0].sort((a,b) => b - a)
-    
-    return land[0][0]
+
+    return Math.max(...prev);
 }
