@@ -3,7 +3,7 @@ function solution(n) {
     let x = n;
     
     while (x > 0) {
-        const q = parseInt(x / 2);
+        const q = x >> 1;
         const r = x % 2;
         
         if (r) {
