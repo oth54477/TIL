@@ -8,7 +8,7 @@ function solution(n) {
         
         if (r) {
             result += r;
-        };
+        }
         
         x = q;
     }
