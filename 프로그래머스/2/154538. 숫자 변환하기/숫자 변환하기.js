@@ -1,6 +1,3 @@
-// https://school.programmers.co.kr/learn/courses/30/lessons/154538
-// [programmers] 154538. 숫자 변환하기
-
 function solution(x, y, n) {
     class Q {
         constructor() {
@@ -48,13 +45,11 @@ function solution(x, y, n) {
         const nx2 = multiply2(current);
         const nx3 = multiply3(current);
 
-        // 🔥 수정: 각 다음 값들을 배열로 처리
         for (const next of [nx1, nx2, nx3]) {
             if (next === y) {
                 return cnt + 1;
             }
 
-            // 🔥 중요: 방문하지 않았고, y보다 작은 경우만 큐에 추가
             if (next < y && !visited.has(next)) {
                 visited.add(next);
                 q.enqueue([next, cnt + 1]);
