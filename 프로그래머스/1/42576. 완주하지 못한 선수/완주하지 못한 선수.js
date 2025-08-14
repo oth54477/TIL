@@ -1,0 +1,1 @@
+const solution = (participant, completion) => participant.sort().find((item, index) => (completion.sorted ??= completion.sort())[index] !== item);
